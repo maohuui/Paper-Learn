@@ -1,0 +1,35 @@
+##文件说明：
+  #demo1:单个源文件
+  
+  #demo2:同一目录，多个源文件
+
+  #demo3:多个目录，多个源文件
+      
+  #demo4:自定义编译选项
+      将 MathFunctions 库设为一个可选的库，如果该选项为 ON
+      ccmake 可以设置改变了的值
+
+  #demo5:定制安装规则
+      两个功能分别可以通过在产生 Makefile 后使用 make install 和 make test 来执行
+      让 CMake 支持 gdb 的设置也很容易，只需要指定 Debug 模式下开启 -g 选项：
+
+  #demo6:添加环境检查
+
+  #demo7:添加版本号
+
+  #demo8:生成安装包
+      添加的代码做了以下几个工作：
+
+       导入 InstallRequiredSystemLibraries 模块，以便之后导入 CPack 模块；
+       设置一些 CPack 相关变量，包括版权信息和版本信息，其中版本信息用了上一节定义的版本号；
+       导入 CPack 模块。
+
+   接下来的工作是像往常一样构建工程，并执行 cpack 命令。
+
+    生成二进制安装包：cpack -C CPackConfig.cmake
+
+    生成源码安装包   cpack -C CPackSourceConfig.cmake
+
+   我们可以试一下。在生成项目后，执行 cpack -C CPackConfig.cmake 命令：
+      
+
