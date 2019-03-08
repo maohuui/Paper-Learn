@@ -1,7 +1,10 @@
 文件说明：
+1. code: cppPython-master: github上大神写的cpp调用python 接口
 
-1. cppPython-master: github上大神写的cpp调用python 接口
+         testWidget: rangeimage 放在qt界面中
 
-2. testWidget: rangeimage 放在qt界面中
+         testCMake: cmakelist
 
-3. file:学习资料
+2. file:学习资料
+
+3. plugin: qt vtk插件
