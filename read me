@@ -4,7 +4,13 @@
          testWidget: rangeimage 放在qt界面中
 
          testCMake: cmakelist
+  
+         MVC-MVD: mvc mvd 模式学习
 
-2. file:学习资料
+         SimpleTranslator: python 实现的翻译器
+
+2. file: 学习资料
+         valgrind: ubuntu 测试
+        
 
 3. plugin: qt vtk插件
