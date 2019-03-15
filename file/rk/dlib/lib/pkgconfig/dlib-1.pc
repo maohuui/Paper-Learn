@@ -1,0 +1,9 @@
+libdir=/home/maohui/all_files/b_files/TOFDemo/Crossing/RESULT/dlib/lib
+includedir=/home/maohui/all_files/b_files/TOFDemo/Crossing/RESULT/dlib/include
+
+Name: dlib
+Description: Numerical and networking C++ library
+Version: 19.16.0
+Libs: -L${libdir} -ldlib
+Cflags: -I${includedir}
+Requires:

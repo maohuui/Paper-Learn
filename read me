@@ -10,7 +10,8 @@
          SimpleTranslator: python 实现的翻译器
 
 2. file: 学习资料
-         valgrind: ubuntu 测试
+        valgrind: ubuntu 测试
+	rk :交叉编译的结果 cmakelist 是模板
         
 
 3. plugin: qt vtk插件

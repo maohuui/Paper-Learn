@@ -1,0 +1,65 @@
+cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+project(demo)
+
+SET(CMAKE_SYSTEM_NAME Linux)
+SET(CMAKE_SYSTEM_VERSION 1)
+
+SET(CMAKE_C_COMPILER ../toolchain/bin/aarch64-buildroot-linux-gnu-gcc)
+SET(CMAKE_CXX_COMPILER ../toolchain/bin/aarch64-buildroot-linux-gnu-g++)
+#SET(CMAKE_FIND_ROOT_PATH ../toolchain/ ../toolchain/aarch64-buildroot-linux-gnu/sysroot/usr/include/GLES2)
+
+#include_directories(../toolchain/aarch64-buildroot-linux-gnu/sysroot/usr/include/qt5)
+#include_directories(../toolchain/aarch64-buildroot-linux-gnu/sysroot/usr)
+#include_directories(../toolchain/aarch64-buildroot-linux-gnu/sysroot/usr/include/GLES2)
+
+SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM ONLY)
+SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+
+set(OpenCV_DIR "../opencv/share/OpenCV")
+message("OpenCV_DIR: ${OpenCV_DIR}")
+find_package(OpenCV REQUIRED)
+if(OpenCV_FOUND)
+    message("found opencv: ${OpenCV_INCLUDE_DIRS}")
+    include_directories(${OpenCV_INCLUDE_DIRS})
+else()
+    message("not found OpenCV_FOUND")
+endif(OpenCV_FOUND)
+
+#----------------------------dlib-------------------------#
+set(dlib_DIR "../dlib/lib/cmake/dlib")
+message("dlib_DIR: ${dlib_DIR}")
+find_package(dlib REQUIRED)
+if(dlib_FOUND)
+    message("found dlib: ${dlib_INCLUDE_DIRS}")
+    include_directories(${dlib_INCLUDE_DIRS})
+else()
+    message("not found dlib_FOUND")
+endif(dlib_FOUND)
+
+message("-----------------------------------------------------------------")
+#----------------------------qt-------------------------#
+SET(Qt5Widgets_DIR ../toolchain/aarch64-buildroot-linux-gnu/sysroot/usr/lib/cmake/Qt5Widgets)
+message("Qt5Widgets_DIR: ${Qt5Widgets_DIR}")
+find_package(Qt5Widgets REQUIRED)
+if(Qt5Widgets_FOUND)
+    message("found Qt5Widgets: ${Qt5Widgets_INCLUDE_DIRS}")
+    #include_directories(${Qt5_INCLUDE_DIRS})
+else()
+    message("not found Qt5Widgets_FOUND")
+endif(Qt5Widgets_FOUND)
+
+message("-----------------------------------------------------------------")
+SET(Qt5Gui_DIR ../toolchain/aarch64-buildroot-linux-gnu/sysroot/usr/lib/cmake/Qt5Gui)
+message("Qt5Gui_DIR: ${Qt5Gui_DIR}")
+find_package(Qt5Gui REQUIRED)
+if(Qt5Gui_FOUND)
+    message("found Qt5Gui: ${Qt5Gui_INCLUDE_DIRS}")
+    #include_directories(${Qt5_INCLUDE_DIRS})
+else()
+    message("not found Qt5Gui_FOUND")
+endif(Qt5Gui_FOUND)
+
+
+add_executable(${PROJECT_NAME} "test1.cpp")
+target_link_libraries (${PROJECT_NAME} ${OpenCV_LIBS} ${dlib_LIBRARIES} Qt5::Widgets Qt5::Gui)
